@@ -106,6 +106,7 @@ const handlePullRequest = async (
     octokit: InstanceType<typeof GitHub>;
   }>,
 ): Promise<void> => {
+  // Removed the PR auto-merge dependency
   // if (!pullRequest.auto_merge) {
   //   info(
   //     `Pull request #${pullRequest.number} does not have auto-merge enabled`,
@@ -189,7 +190,8 @@ const run = async () => {
             `Pull request #${pullRequest.number} does not have the "${label}" label`,
           );
           continue
-        }      
+        }
+        
       await handlePullRequest(pullRequest, { eventPayload, octokit });
     }
   } catch (error: unknown) {
