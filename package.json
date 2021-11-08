@@ -1,6 +1,6 @@
 {
   "name": "auto-update",
-  "version": "2.1.2",
+  "version": "2.2.0-pg",
   "license": "MIT",
   "files": [
     "action.yml",
