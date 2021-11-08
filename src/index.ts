@@ -176,22 +176,22 @@ const run = async () => {
       )}`,
     );
 
-    for (const pullRequest of pullRequests) {  
-        if (pullRequest.draft) {
-          info(`Pull request #${pullRequest.number} is still a draft`);
-          continue
-        }
-  
-        if (
-          label !== undefined &&
-          !pullRequest.labels.some(({ name }) => name === label)
-        ) {
-          info(
-            `Pull request #${pullRequest.number} does not have the "${label}" label`,
-          );
-          continue
-        }
-        
+    for (const pullRequest of pullRequests) {
+      if (pullRequest.draft) {
+        info(`Pull request #${pullRequest.number} is still a draft`);
+        continue;
+      }
+
+      if (
+        label !== undefined &&
+        !pullRequest.labels.some(({ name }) => name === label)
+      ) {
+        info(
+          `Pull request #${pullRequest.number} does not have the "${label}" label`,
+        );
+        continue;
+      }
+
       await handlePullRequest(pullRequest, { eventPayload, octokit });
     }
   } catch (error: unknown) {
